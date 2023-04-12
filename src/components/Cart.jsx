@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getStoredCart } from '../utils/fakeDB';
+import { getStoredCart, removeFromDb } from '../utils/fakeDB';
 import { Link, useLoaderData } from 'react-router-dom';
 import CartItem from './Cards/CartItem';
 

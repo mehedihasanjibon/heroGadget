@@ -43,7 +43,7 @@ const removeFromDb = id => {
     // get previous data from local storage 
     const storedCart = localStorage.getItem('shopping-cart');
     if(storedCart){
-        const shoppingCart = json.parse(storedCart);
+        const shoppingCart = JSON.parse(storedCart);
         if(id in shoppingCart){
             delete shoppingCart[id]
             localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart))
