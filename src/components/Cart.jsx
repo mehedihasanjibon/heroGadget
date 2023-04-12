@@ -11,6 +11,11 @@ const Cart = () => {
             total = total + product.price * product.quantity;
         }
     }
+
+    // Remove item from shopping cart 
+    const handleRemoveItem = id => {
+        removeFromDb(id)
+    }
     
     // console.log(cartArray);
 
@@ -27,6 +32,7 @@ const Cart = () => {
                         cartArray.map(product => <CartItem
                             key={product.id} 
                             product={product}
+                            handleRemoveItem={handleRemoveItem}
                             ></CartItem> )
                     }
                 </ul>
