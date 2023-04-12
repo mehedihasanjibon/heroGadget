@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { getStoredCart } from '../utils/fakeDB';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import CartItem from './Cards/CartItem';
 
 const Cart = () => {
-const {cartArray} = useLoaderData();
+    const {cartArray} = useLoaderData();
+    let total = 0;
+    if(cartArray.length > 0){
+        for(const product of cartArray){
+            total = total + product.price * product.quantity;
+        }
+    }
     
-    console.log(cartArray);
+    // console.log(cartArray);
 
     return (
         <div className='flex min-h-screen items-start justify-center bg-gray-100 text-gray-900
@@ -24,6 +30,24 @@ const {cartArray} = useLoaderData();
                             ></CartItem> )
                     }
                 </ul>
+                <div className='space-y-1 text-right'>
+                    <p> 
+                        Total Amount: <span className='font-semibold'>{total}$</span>
+                    </p>
+                    <p className='text-sm text-gray-400'> 
+                        Not including taxes and shipping costs
+                    </p>
+                </div>
+                <div className='flex justify-end space-x-4'>
+                    {
+                        cartArray.length > 0 ? 
+                            <button className='btn-outlined'> clear Cart </button> : 
+                            <Link to='/shop'>
+                                <button className='btn-outlined'> Back To Shop </button>
+                            </Link>
+                    }
+                    <button className='btn-primary'> Place Order </button>
+                </div>
             </div>
         </div>
     );
