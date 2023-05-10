@@ -45,13 +45,13 @@ const Cart = () => {
                     </p>
                 </div>
                 <div className='flex justify-end space-x-4'>
-                    {
-                        cartArray.length > 0 ? 
-                            <button className='btn-outlined'> clear Cart </button> : 
-                            <Link to='/shop'>
-                                <button className='btn-outlined'> Back To Shop </button>
-                            </Link>
-                    }
+                    {cartArray.length > 0 ? (
+                        <button className='btn-outlined'> Clear Cart </button>
+                    ) : (
+                        <Link to='/shop'>
+                            <button className='btn-outlined'> Back To Shop </button>
+                        </Link>
+                    )}
                     <button className='btn-primary'> Place Order </button>
                 </div>
             </div>
