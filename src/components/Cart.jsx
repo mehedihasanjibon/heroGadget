@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getStoredCart, removeFromDb } from '../utils/fakeDB';
+import { deleteShoppingCart, getStoredCart, removeFromDb } from '../utils/fakeDB';
 import { Link, useLoaderData } from 'react-router-dom';
 import CartItem from './Cards/CartItem';
 
@@ -15,6 +15,11 @@ const Cart = () => {
     // Remove item from shopping cart 
     const handleRemoveItem = id => {
         removeFromDb(id)
+    }
+
+    // Delete shopping cart 
+    const deleteCartHandler = () => {
+        deleteShoppingCart();
     }
     
     // console.log(cartArray);
@@ -46,7 +51,7 @@ const Cart = () => {
                 </div>
                 <div className='flex justify-end space-x-4'>
                     {cartArray.length > 0 ? (
-                        <button className='btn-outlined'> Clear Cart </button>
+                        <button onClick={deleteCartHandler} className='btn-outlined'> Clear Cart </button>
                     ) : (
                         <Link to='/shop'>
                             <button className='btn-outlined'> Back To Shop </button>
