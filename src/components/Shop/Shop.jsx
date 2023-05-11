@@ -8,7 +8,7 @@ const Shop = () => {
     // const productData = useLoaderData();
     // console.log(productData);
     const products = useContext(ProductContext)
-    console.log(products);
+    // console.log(products);
 
     // Card button handler 
     const handleAddToCart = id => {
